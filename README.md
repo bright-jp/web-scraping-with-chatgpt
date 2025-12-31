@@ -1,49 +1,49 @@
-# Web Scraping With ChatGPT
+# ChatGPT を使った Webスクレイピング
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.com/)
+[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.jp/)
 
-This guide epxlain how to use ChatGPT to generate scripts in Python for web scraping both static and complex websites:
+このガイドでは、ChatGPT を使用して、静的および複雑な Webサイトの両方を対象に、Webスクレイピング用の Python スクリプトを生成する方法を説明します。
 
-- [Prerequisites](#prerequisites)  
-- [Scraping Websites with Static HTML Using ChatGPT](#scraping-websites-with-static-html-using-chatgpt)  
-- [Scraping Complex Websites](#scraping-complex-websites)  
+- [前提条件](#prerequisites)  
+- [ChatGPT を使って静的 HTML の Webサイトをスクレイピングする](#scraping-websites-with-static-html-using-chatgpt)  
+- [複雑な Webサイトのスクレイピング](#scraping-complex-websites)  
 
 ## Prerequisites
 
-To follow this guide, you will need to be familiar with Python and have it installed locally, as well as have a ChatGPT account.
+このガイドに沿って進めるには、Python に慣れていてローカルにインストールされていること、また ChatGPT アカウントをお持ちであることが必要です。
 
-When you use ChatGPT to generate your web scraping scripts, there are two main steps:
+ChatGPT を使って Webスクレイピングスクリプトを生成する際には、主に 2 つのステップがあります。
 
-To create web scraping scripts using ChatGPT, follow these steps:
+ChatGPT を使用して Webスクレイピングスクリプトを作成するには、次の手順に従ってください。
 
-1. **Identify Target Elements**  
-   - Document the steps needed to find and extract data.  
-   - Right-click the desired page element → **Inspect** → **Copy > Copy selector** to get the HTML path.  
+1. **ターゲット要素を特定する**  
+   - データを見つけて抽出するために必要な手順を文書化します。  
+   - 目的のページ要素を右クリック → **Inspect** → **Copy > Copy selector** を選択して HTML パスを取得します。  
 
    ![Copying a selector](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Copying-a-selector-1.png)
 
-2. **Generate Code with ChatGPT**  
-   - Provide clear and detailed prompts specifying the scraping logic.
+2. **ChatGPT でコードを生成する**  
+   - スクレイピングのロジックを指定する、明確で詳細なプロンプトを提示します。
 
-3. **Execute & Test**  
-   - Run the generated script and validate the results.
+3. **実行とテスト**  
+   - 生成されたスクリプトを実行し、結果を検証します。
 
 ## Scraping Websites with Static HTML Using ChatGPT
 
-Let’s use ChatGPT to scrape some websites with [static HTML](https://www.w3schools.com/howto/howto_website_static.asp) elements. To start, you’ll scrape the book title and prices from [https://books.toscrape.com](https://books.toscrape.com/).
+ChatGPT を使って、[static HTML](https://www.w3schools.com/howto/howto_website_static.asp) 要素を持ついくつかの Webサイトをスクレイピングしてみましょう。まずは、[https://books.toscrape.com](https://books.toscrape.com/) から書籍タイトルと価格をスクレイピングします。
 
-Start with identifying the HTML elements that contain the data you need.  
+最初に、必要なデータを含む HTML 要素を特定するところから始めます。  
 
-* The selector for the book title is `#default > div.container-fluid.page > div > div > div > section > div:nth-child(2) > ol > li:nth-child(1) > article > h3 > a`.
-* The selector for the book price is \*`#default > div.container-fluid.page > div > div > div > section > div:nth-child(2) > ol > li:nth-child(1) > article > div.product_price > p.price_color`.
+* 書籍タイトルの selector は `#default > div.container-fluid.page > div > div > div > section > div:nth-child(2) > ol > li:nth-child(1) > article > h3 > a` です。
+* 書籍価格の selector は \*`#default > div.container-fluid.page > div > div > div > section > div:nth-child(2) > ol > li:nth-child(1) > article > div.product_price > p.price_color` です。
 
-Next, craft specific and detailed ChatGPT prompts to generate the scraping code. To do this, instruct ChatGPT to install any necessary Python packages, guide it through extracting HTML selectors (which you identified earlier), and request that it saves the data as an Excel file. 
+次に、スクレイピングコードを生成するために、具体的で詳細な ChatGPT プロンプトを作成します。そのために、必要な Python パッケージをインストールするよう ChatGPT に指示し、（先ほど特定した）HTML selector の抽出方法を案内し、データを Excel ファイルとして保存するよう依頼します。 
 
 > **Tip**:
 > 
-> Don’t forget to set the ChatGPT version to GPT-4o.
+> ChatGPT のバージョンを GPT-4o に設定するのを忘れないでください。
 
-You can input something like this into ChatGPT:
+ChatGPT には、例えば次のように入力できます。
 
 > You are a web scraping expert utilizing Python’s Beautiful Soup library and any necessary automation tools. I want you to generate a detailed step-by-step script to scrape `https://books.toscrape.com`; kindly do the following:
 > 
@@ -52,17 +52,17 @@ You can input something like this into ChatGPT:
 > 3.  Extract the list of all book titles and prices and store it in an Excel file.
 > 4.  Scrape the first page only.
 
-Please note that you may receive a slightly different response.
+なお、返答は多少異なる場合があります。
 
-In the response, ChatGPT instructs you to run the following command to install the Beautiful Soup library, which performs web scraping, and the [pandas library](https://pandas.pydata.org/), a comprehensive data analysis library that stores data as an Excel:
+レスポンスの中で ChatGPT は、Webスクレイピングを実行する Beautiful Soup ライブラリと、データを Excel として保存できる包括的なデータ分析ライブラリである [pandas library](https://pandas.pydata.org/) をインストールするために、次のコマンドを実行するよう指示します。
 
 ```bash
 pip3 install requests beautifulsoup4 pandas openpyxl
 ```
 
-You’ll notice that ChatGPT also suggests installing [openpyxl](https://pypi.org/project/openpyxl/), but it’s not needed here.
+ChatGPT は [openpyxl](https://pypi.org/project/openpyxl/) のインストールも提案しますが、ここでは不要です。
 
-ChatGPT also provides the following web scraping code:
+また、ChatGPT は次の Webスクレイピングコードも提供します。
 
 ```python
 import requests
@@ -116,24 +116,24 @@ else:
     print('Failed to retrieve the webpage')
 ```
 
-This code imports the `requests` module, which handles HTTP calls to scrape website data. It also imports the pandas package to store the scraped data in an Excel file. The code defines the base URL of the website and specifies the HTML selectors used to extract the required data.  
+このコードは、Webサイトデータをスクレイピングするための HTTP 呼び出しを扱う `requests` モジュールをインポートします。また、スクレイピングしたデータを Excel ファイルに保存するために pandas パッケージもインポートします。コードでは Webサイトのベース URL を定義し、必要なデータを抽出するために使用する HTML selector を指定しています。  
 
-Next, the code retrieves the website content and stores it as a `BeautifulSoup` object named `soup`. Using the identified HTML selectors, it extracts the book titles and prices as lists from the `soup` object. Finally, it creates a pandas DataFrame from these lists and saves the data as an Excel file.  
+次に、コードは Webサイトのコンテンツを取得し、`soup` という名前の `BeautifulSoup` オブジェクトとして保存します。特定した HTML selector を使用して、`soup` オブジェクトから書籍タイトルと価格をリストとして抽出します。最後に、これらのリストから pandas DataFrame を作成し、データを Excel ファイルとして保存します。  
 
-Next, you need to save the code to a file named `books_scraping.py` and run the command `python3 books_scraping.py` from the command line. This code generates an Excel file named `books_scraped.xlsx` in the same directory as `books_scraping.py`:
+次に、コードを `books_scraping.py` というファイル名で保存し、コマンドラインから `python3 books_scraping.py` を実行する必要があります。このコードにより、`books_scraping.py` と同じディレクトリに `books_scraped.xlsx` という Excel ファイルが生成されます。
 
 ![The generated Excel file named books_scraped.xlsx](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/The-generated-Excel-file-named-books_scraped.xlsx-1024x684.png)
 
-Let's scrape another simple website, https://quotes.toscrape.com, which contains a collection of quotes.
+次に、引用文のコレクションを含む別のシンプルな Webサイト https://quotes.toscrape.com をスクレイピングしてみましょう。
 
-Again, let’s start by identifying the sequence of steps.
+今回も、まずは手順の流れを特定するところから始めます。
 
-If you’re using Chrome, find the following HTML selectors:
+Chrome を使用している場合は、次の HTML selector を見つけてください。
 
-* `body > div.container > div:nth-child(2) > div.col-md-8 > div:nth-child(1) > span.text` to scrape the **quote**
-* `body > div.container > div:nth-child(2) > div.col-md-8 > div:nth-child(1) > span:nth-child(2) > small` to identify the **author**
+* **quote** をスクレイピングするための `body > div.container > div:nth-child(2) > div.col-md-8 > div:nth-child(1) > span.text`
+* **author** を特定するための `body > div.container > div:nth-child(2) > div.col-md-8 > div:nth-child(1) > span:nth-child(2) > small`
 
-Once you’ve identified the HTML selectors you want to scrape, draft a detailed prompt to generate the scraping code:
+スクレイピングしたい HTML selector を特定したら、スクレイピングコードを生成するための詳細なプロンプトを作成します。
 
 > You are a web scraping expert utilizing Python’s Beautiful Soup library and any necessary automation tools. I want you to generate a detailed step-by-step script to scrape `https://quotes.toscrape.com`. Kindly do the following:
 > 
@@ -142,13 +142,13 @@ Once you’ve identified the HTML selectors you want to scrape, draft a detailed
 > 3.  Extract the list of all quotes and authors and store it in an Excel file.
 > 4.  Scrape the first page only.
 
-After inputting this information, ChatGPT should provide you with the following command, which installs the Beautiful Soup, pandas, and openpyxl libraries:
+この情報を入力すると、ChatGPT は Beautiful Soup、pandas、openpyxl ライブラリをインストールする次のコマンドを提示するはずです。
 
 ```bash
 pip3 install requests beautifulsoup4 pandas openpyxl
 ```
 
-ChatGPT should also provide the following web scraping code:
+ChatGPT は次の Webスクレイピングコードも提示するはずです。
 
 ```python
 import requests
@@ -215,37 +215,37 @@ df.to_excel('quotes.xlsx', index=False)
 print("Quotes have been saved to quotes.xlsx")
 ```
 
-Save this code to a file named `quotes_scraping.py` and run the command `python3 books_scraping.py` from the command line. This code generates an Excel file named `quotes_scraped.xlsx` in the same directory as `quotes_scraping.py`. Open the generated Excel file, and it should look like this:
+このコードを `quotes_scraping.py` というファイル名で保存し、コマンドラインから `python3 books_scraping.py` を実行してください。このコードにより、`quotes_scraping.py` と同じディレクトリに `quotes_scraped.xlsx` という Excel ファイルが生成されます。生成された Excel ファイルを開くと、次のようになっているはずです。
 
 ![Generated Excel file with quotes and authors](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Generated-Excel-file-with-quotes-and-authors-1024x226.png)
 
 ## Scraping Complex Websites
 
-Scraping complex websites can be challenging because dynamic content is often loaded via JavaScript, which tools like [`requests`](https://docs.python-requests.org/en/latest/) and `BeautifulSoup` cannot handle. These sites may require interactions such as clicking buttons or scrolling to access all data.  
+複雑な Webサイトのスクレイピングは、動的コンテンツが JavaScript によって読み込まれることが多く、[`requests`](https://docs.python-requests.org/en/latest/) や `BeautifulSoup` のようなツールでは対応できないため、難しくなる場合があります。これらのサイトでは、すべてのデータにアクセスするために、ボタンのクリックやスクロールといった操作が必要になることがあります。  
 
-To overcome this challenge, you can use [WebDriver](https://www.selenium.dev/documentation/webdriver/), which renders pages like a browser and simulates user interactions, ensuring all content is accessible just as it would be for a typical user.  
+この課題を克服するために、[WebDriver](https://www.selenium.dev/documentation/webdriver/) を使用できます。WebDriver はブラウザのようにページをレンダリングし、ユーザー操作をシミュレートすることで、一般的なユーザーと同様にすべてのコンテンツへアクセスできるようにします。  
 
-For example, [Yelp](https://www.yelp.com/) is a crowd-sourced review website for businesses that relies on dynamic page generation and requires multiple user interactions. In this case, you'll use ChatGPT to generate a scraping script that retrieves a list of businesses in Stockholm along with their ratings.  
+例えば、[Yelp](https://www.yelp.com/) は、動的なページ生成に依存し、複数のユーザー操作を必要とする、事業者向けのクラウドソース型レビュー Webサイトです。このケースでは、ChatGPT を使って、ストックホルムの事業者一覧とその評価を取得するスクレイピングスクリプトを生成します。  
 
-Here is the workflow for scraping Yelp:
+Yelp をスクレイピングするワークフローは次のとおりです。
 
-1. Find the selector of the location text box that the script will use; in this case, it’s `#search_location`. Type “Stockholm” in the location search box and then find the search button selector; in this case, it is `#header_find_form > div.y-css-1iy1dwt > button`. Click the search button to see the search results. This may take a few seconds. Find a selector that contains the business name (_ie_ `#main-content > ul > li:nth-child(3) > div.container_\_09f24_\_FeTO6.hoverable_\_09f24_\__UXLO.y-css-way87j > div > div.y-css-cxcdjj > div:nth-child(1) > div.y-css-1iy1dwt > div:nth-child(1) > div > div > h3 > a`):  
+1. スクリプトで使用するロケーション入力テキストボックスの selector を見つけます。この例では `#search_location` です。ロケーション検索ボックスに「Stockholm」と入力し、その後検索ボタンの selector を見つけます。この例では `#header_find_form > div.y-css-1iy1dwt > button` です。検索ボタンをクリックして検索結果を表示します。これには数秒かかる場合があります。事業者名を含む selector（_ie_ `#main-content > ul > li:nth-child(3) > div.container_\_09f24_\_FeTO6.hoverable_\_09f24_\__UXLO.y-css-way87j > div > div.y-css-cxcdjj > div:nth-child(1) > div.y-css-1iy1dwt > div:nth-child(1) > div > div > h3 > a`）を見つけます。  
 
 ![Getting the selector for the business name](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Getting-the-selector-for-the-business-name.png)
 
-2. Find the selector that contains the rating for the business (_ie_ `#main-content > ul > li:nth-child(3) > div.container_\_09f24_\_FeTO6.hoverable_\_09f24_\__UXLO.y-css-way87j > div > div.y-css-cxcdjj > div:nth-child(1) > div.y-css-1iy1dwt > div:nth-child(2) > div > div > div > div.y-css-ohs7lg > span.y-css-jf9frv`):  
+2. 事業者の評価を含む selector（_ie_ `#main-content > ul > li:nth-child(3) > div.container_\_09f24_\_FeTO6.hoverable_\_09f24_\__UXLO.y-css-way87j > div > div.y-css-cxcdjj > div:nth-child(1) > div.y-css-1iy1dwt > div:nth-child(2) > div > div > div > div.y-css-ohs7lg > span.y-css-jf9frv`）を見つけます。  
 
 ![Getting the selector for the business average review](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Getting-the-selector-for-the-business-average-review.png)
 
-3. Find the selector for the **Open Now** button; here, it’s `#main-content > div.stickyFilterOnSmallScreen_\_09f24_\_UWWJ3.hideFilterOnLargeScreen_\_09f24_\_ilqIP.y-css-9ze9ku > div > div > div > div > div > span > button:nth-child(3) > span`:  
+3. **Open Now** ボタンの selector を見つけます。ここでは `#main-content > div.stickyFilterOnSmallScreen_\_09f24_\_UWWJ3.hideFilterOnLargeScreen_\_09f24_\_ilqIP.y-css-9ze9ku > div > div > div > div > div > span > button:nth-child(3) > span` です。  
     
 ![Open Now button selector](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Open-Now-button-selector.png)
     
-4. Save a copy of the web page so that you can upload it later, along with the ChatGPT prompt to help ChatGPT understand the context of the prompts. In Chrome, you can do that by clicking the three dots at the top right and then clicking **Save** and **Share > Save Page As**:  
+4. 後でアップロードできるように Webページのコピーを保存します。これは、プロンプトの文脈を ChatGPT が理解するのに役立ちます。Chrome では、右上の三点メニューをクリックし、**Save** と **Share > Save Page As** をクリックすると実行できます。  
     
 ![Save web page in Chrome](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Save-web-page-in-Chrome.png)    
 
-Next, using the selector values you extracted earlier, you need to draft a detailed prompt to guide ChatGPT in generating the scraping script:
+次に、先ほど抽出した selector の値を使って、ChatGPT がスクレイピングスクリプトを生成する際の指針となる詳細なプロンプトを作成する必要があります。
 
 > You are a web scraping expert. I want you to scrape https://www.yelp.com/ to extract specific information. Follow these steps before scraping:
 > 
@@ -261,13 +261,13 @@ Next, using the selector values you extracted earlier, you need to draft a detai
 > 10.  Use WebDriver from Selenium to automate the process.
 > 11.  Refer to the attached copy of the results HTML page to give you context about the HTML format.
 
-After inputting this information, ChatGPT tells you to install Selenium, the web automation framework that supports WebDriver, and pandas:
+この情報を入力すると、ChatGPT は WebDriver をサポートする Web 自動化フレームワークである Selenium と、pandas をインストールするよう指示します。
 
 ```bash
 pip3 install selenium pandas
 ```
 
-ChatGPT also provides you with some scraping code along with an explanation:
+また、ChatGPT はいくつかのスクレイピングコードと説明も提供します。
 
 ```python
 from selenium import webdriver
@@ -334,16 +334,16 @@ finally:
 
 ```
 
-Save this script and run it with Python in an IDE like VS Code. You’ll notice that the code launches Chrome, navigates to Yelp, clears the location text box, enters “Stockholm”, clicks the search button, filters businesses that are open now, and then closes the page. After that, the scraping result is saved to the Excel file `stockholm_bussinsess.xlsx`:
+このスクリプトを保存し、VS Code のような IDE で Python を使って実行します。コードが Chrome を起動し、Yelp に移動し、ロケーションのテキストボックスをクリアし、「Stockholm」を入力して検索ボタンをクリックし、営業中の事業者をフィルタリングしてからページを閉じることが分かるはずです。その後、スクレイピング結果は Excel ファイル `stockholm_bussinsess.xlsx` に保存されます。
 
 ![Yelp business reviews in Excel](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Yelp-business-reviews-in-Excel.png)
 
-All the source code for this tutorial is available on [GitHub](https://github.com/smarter-code/article-chatgpt-webscraping/tree/main).
+このチュートリアルのソースコードはすべて [GitHub](https://github.com/smarter-code/article-chatgpt-webscraping/tree/main) で利用できます。
 
 ## Conclusion
 
-While scraping a website like Yelp was straightforward in this guide, in many other scenarios, web scraping complex HTML structures can be challenging.
+このガイドでは Yelp のスクレイピングは簡単でしたが、他の多くのシナリオでは、複雑な HTML 構造の Webスクレイピングが難しくなる場合があります。
 
-Bright Data offers a wide variety of data collection services, including advanced proxy services to help bypass IP bans, [Web Unlocker to bypass and solve CAPTCHAs](https://brightdata.com//products/web-unlocker), [Web Scraping APIs](https://brightdata.com/products/web-scraper) for automated data extraction, and a [Scraping Browser](https://brightdata.com/products/scraping-browser) for efficient data extraction.
+Bright Data は、IP BAN の回避に役立つ高度なプロキシサービス、[CAPTCHA を回避して解決する Web Unlocker](https://brightdata.jp//products/web-unlocker)、自動データ抽出のための [Web Scraping APIs](https://brightdata.jp/products/web-scraper)、効率的なデータ抽出のための [Scraping Browser](https://brightdata.jp/products/scraping-browser) など、幅広いデータ収集サービスを提供しています。
 
-Start with a free trial today!
+今すぐ無料トライアルから始めましょう！
