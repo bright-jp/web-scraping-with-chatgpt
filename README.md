@@ -1,6 +1,6 @@
 # ChatGPT を使った Webスクレイピング
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.jp/)
+[![Promo](https://github.com/bright-jp/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.jp/)
 
 このガイドでは、ChatGPT を使用して、静的および複雑な Webサイトの両方を対象に、Webスクレイピング用の Python スクリプトを生成する方法を説明します。
 
@@ -20,7 +20,7 @@ ChatGPT を使用して Webスクレイピングスクリプトを作成する�
    - データを見つけて抽出するために必要な手順を文書化します。  
    - 目的のページ要素を右クリック → **Inspect** → **Copy > Copy selector** を選択して HTML パスを取得します。  
 
-   ![Copying a selector](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Copying-a-selector-1.png)
+   ![Copying a selector](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Copying-a-selector-1.png)
 
 2. **ChatGPT でコードを生成する**  
    - スクレイピングのロジックを指定する、明確で詳細なプロンプトを提示します。
@@ -122,7 +122,7 @@ else:
 
 次に、コードを `books_scraping.py` というファイル名で保存し、コマンドラインから `python3 books_scraping.py` を実行する必要があります。このコードにより、`books_scraping.py` と同じディレクトリに `books_scraped.xlsx` という Excel ファイルが生成されます。
 
-![The generated Excel file named books_scraped.xlsx](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/The-generated-Excel-file-named-books_scraped.xlsx-1024x684.png)
+![The generated Excel file named books_scraped.xlsx](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/The-generated-Excel-file-named-books_scraped.xlsx-1024x684.png)
 
 次に、引用文のコレクションを含む別のシンプルな Webサイト https://quotes.toscrape.com をスクレイピングしてみましょう。
 
@@ -217,7 +217,7 @@ print("Quotes have been saved to quotes.xlsx")
 
 このコードを `quotes_scraping.py` というファイル名で保存し、コマンドラインから `python3 books_scraping.py` を実行してください。このコードにより、`quotes_scraping.py` と同じディレクトリに `quotes_scraped.xlsx` という Excel ファイルが生成されます。生成された Excel ファイルを開くと、次のようになっているはずです。
 
-![Generated Excel file with quotes and authors](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Generated-Excel-file-with-quotes-and-authors-1024x226.png)
+![Generated Excel file with quotes and authors](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Generated-Excel-file-with-quotes-and-authors-1024x226.png)
 
 ## Scraping Complex Websites
 
@@ -231,19 +231,19 @@ Yelp をスクレイピングするワークフローは次のとおりです。
 
 1. スクリプトで使用するロケーション入力テキストボックスの selector を見つけます。この例では `#search_location` です。ロケーション検索ボックスに「Stockholm」と入力し、その後検索ボタンの selector を見つけます。この例では `#header_find_form > div.y-css-1iy1dwt > button` です。検索ボタンをクリックして検索結果を表示します。これには数秒かかる場合があります。事業者名を含む selector（_ie_ `#main-content > ul > li:nth-child(3) > div.container_\_09f24_\_FeTO6.hoverable_\_09f24_\__UXLO.y-css-way87j > div > div.y-css-cxcdjj > div:nth-child(1) > div.y-css-1iy1dwt > div:nth-child(1) > div > div > h3 > a`）を見つけます。  
 
-![Getting the selector for the business name](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Getting-the-selector-for-the-business-name.png)
+![Getting the selector for the business name](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Getting-the-selector-for-the-business-name.png)
 
 2. 事業者の評価を含む selector（_ie_ `#main-content > ul > li:nth-child(3) > div.container_\_09f24_\_FeTO6.hoverable_\_09f24_\__UXLO.y-css-way87j > div > div.y-css-cxcdjj > div:nth-child(1) > div.y-css-1iy1dwt > div:nth-child(2) > div > div > div > div.y-css-ohs7lg > span.y-css-jf9frv`）を見つけます。  
 
-![Getting the selector for the business average review](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Getting-the-selector-for-the-business-average-review.png)
+![Getting the selector for the business average review](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Getting-the-selector-for-the-business-average-review.png)
 
 3. **Open Now** ボタンの selector を見つけます。ここでは `#main-content > div.stickyFilterOnSmallScreen_\_09f24_\_UWWJ3.hideFilterOnLargeScreen_\_09f24_\_ilqIP.y-css-9ze9ku > div > div > div > div > div > span > button:nth-child(3) > span` です。  
     
-![Open Now button selector](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Open-Now-button-selector.png)
+![Open Now button selector](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Open-Now-button-selector.png)
     
 4. 後でアップロードできるように Webページのコピーを保存します。これは、プロンプトの文脈を ChatGPT が理解するのに役立ちます。Chrome では、右上の三点メニューをクリックし、**Save** と **Share > Save Page As** をクリックすると実行できます。  
     
-![Save web page in Chrome](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Save-web-page-in-Chrome.png)    
+![Save web page in Chrome](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Save-web-page-in-Chrome.png)    
 
 次に、先ほど抽出した selector の値を使って、ChatGPT がスクレイピングスクリプトを生成する際の指針となる詳細なプロンプトを作成する必要があります。
 
@@ -336,7 +336,7 @@ finally:
 
 このスクリプトを保存し、VS Code のような IDE で Python を使って実行します。コードが Chrome を起動し、Yelp に移動し、ロケーションのテキストボックスをクリアし、「Stockholm」を入力して検索ボタンをクリックし、営業中の事業者をフィルタリングしてからページを閉じることが分かるはずです。その後、スクレイピング結果は Excel ファイル `stockholm_bussinsess.xlsx` に保存されます。
 
-![Yelp business reviews in Excel](https://github.com/luminati-io/web-scraping-with-chatgpt/blob/main/images/Yelp-business-reviews-in-Excel.png)
+![Yelp business reviews in Excel](https://github.com/bright-jp/web-scraping-with-chatgpt/blob/main/images/Yelp-business-reviews-in-Excel.png)
 
 このチュートリアルのソースコードはすべて [GitHub](https://github.com/smarter-code/article-chatgpt-webscraping/tree/main) で利用できます。
 
